@@ -1,8 +1,9 @@
 ﻿// Author:          Scott Krabbenhoft
 // Created on:      03/13/2022
 
-// Last edited by:  Scott Krabbenhoft
-// Last edited on:  03/15/2022
+// Last edited by:  John Mai
+// Last edited on:  03/15/2022, 2:34 PM
+// Last made edit:  Added flip script to allow player sprite to face left and right accordingly
 
 // Description:     Handles player behaviors, which is just movement for now
 
@@ -22,6 +23,7 @@ public class PlayerBehavior : MonoBehaviour
     float radius;
     bool grounded = false;
     bool doubleJump = false;
+    bool facingRight = true;
     
     void Start()
     {
@@ -61,7 +63,26 @@ public class PlayerBehavior : MonoBehaviour
         rigidBody.position = transform.position + new Vector3(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0, 0);
         // zeroes out x velocity to prevent sliding errors
         rigidBody.velocity = new Vector3(0, rigidBody.velocity.y, 0);
-        
+
+        // If player moves left while facing right, flip the player to the left
+        if (Input.GetKeyDown(KeyCode.A) && facingRight)
+        {
+            Flip();
+        }
+        // If plyer moves right while facing left, flip player to right
+        else if (Input.GetKeyDown(KeyCode.D) && !facingRight)
+        {
+            Flip();
+        }
+    }
+
+    private void Flip()
+    {
+        // Switch way the player is labelled as facing
+        facingRight = !facingRight;
+
+        // Multiply the player's x local scale by -1, flipping them
+        transform.Rotate(0f, 180f, 0f);
     }
 
     public void CollectIngredient(IngredientType type)
