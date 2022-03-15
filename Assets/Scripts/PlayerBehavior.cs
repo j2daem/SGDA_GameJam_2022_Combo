@@ -13,10 +13,11 @@ using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    [Header("Movement Settings")]
+    [Header("Player Settings")]
     [SerializeField] OrderGenerator order;
     [SerializeField] float speed = 4f;
     [SerializeField] float jumpSpeed = 4f;
+    public int lives = 3;
 
     Rigidbody2D rigidBody = null;
     CapsuleCollider2D capsule = null;
@@ -24,6 +25,8 @@ public class PlayerBehavior : MonoBehaviour
     bool grounded = false;
     bool doubleJump = false;
     bool facingRight = true;
+
+    public int score;
     
     void Start()
     {
@@ -66,12 +69,12 @@ public class PlayerBehavior : MonoBehaviour
         rigidBody.velocity = new Vector3(0, rigidBody.velocity.y, 0);
 
         // If player moves left while facing right, flip the player to the left
-        if (Input.GetKeyDown(KeyCode.A) && facingRight)
+        if ((Input.GetAxis("Horizontal") < 0) && facingRight)
         {
             Flip();
         }
         // If plyer moves right while facing left, flip player to right
-        else if (Input.GetKeyDown(KeyCode.D) && !facingRight)
+        else if ((Input.GetAxis("Horizontal") > 0) && !facingRight)
         {
             Flip();
         }
@@ -91,40 +94,22 @@ public class PlayerBehavior : MonoBehaviour
         switch (type)
         {
             case IngredientType.lettuce:
-                if (order.currentOrder[0] == 1)
-                {
-                    //
-                }
+                order.orderProgress[0]++;
                 break;
             case IngredientType.cheese:
-                if (order.currentOrder[1] == 1)
-                {
-                    //
-                }
+                order.orderProgress[1]++;
                 break;
             case IngredientType.onion:
-                if (order.currentOrder[2] == 1)
-                {
-                    //
-                }
+                order.orderProgress[2]++;
                 break;
             case IngredientType.tomato:
-                if (order.currentOrder[3] == 1)
-                {
-                    //
-                }
+                order.orderProgress[3]++;
                 break;
             case IngredientType.pickle:
-                if (order.currentOrder[4] == 1)
-                {
-                    //
-                }
+                order.orderProgress[4]++;
                 break;
             case IngredientType.meat:
-                if (order.currentOrder[5] == 1)
-                {
-                    //
-                }
+                order.orderProgress[5]++;
                 break;
         }
     }
