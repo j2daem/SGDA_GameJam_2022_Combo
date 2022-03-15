@@ -2,7 +2,7 @@
 // Created on:      03/13/2022
 
 // Last edited by:  Scott Krabbenhoft
-// Last edited on:  03/13/2022
+// Last edited on:  03/15/2022
 
 // Description:     Handles player behaviors, which is just movement for now
 
@@ -13,6 +13,7 @@ using UnityEngine;
 public class PlayerBehavior : MonoBehaviour
 {
     [Header("Movement Settings")]
+    [SerializeField] OrderGenerator order;
     [SerializeField] float speed = 4f;
     [SerializeField] float jumpSpeed = 4f;
 
@@ -61,5 +62,48 @@ public class PlayerBehavior : MonoBehaviour
         // zeroes out x velocity to prevent sliding errors
         rigidBody.velocity = new Vector3(0, rigidBody.velocity.y, 0);
         
+    }
+
+    public void CollectIngredient(IngredientType type)
+    {
+        switch (type)
+        {
+            case IngredientType.lettuce:
+                if (order.currentOrder[0] == 1)
+                {
+                    //
+                }
+                break;
+            case IngredientType.cheese:
+                if (order.currentOrder[1] == 1)
+                {
+                    //
+                }
+                break;
+            case IngredientType.onion:
+                if (order.currentOrder[2] == 1)
+                {
+                    //
+                }
+                break;
+            case IngredientType.tomato:
+                if (order.currentOrder[3] == 1)
+                {
+                    //
+                }
+                break;
+            case IngredientType.pickle:
+                if (order.currentOrder[4] == 1)
+                {
+                    //
+                }
+                break;
+            case IngredientType.meat:
+                if (order.currentOrder[5] == 1)
+                {
+                    //
+                }
+                break;
+        }
     }
 }
