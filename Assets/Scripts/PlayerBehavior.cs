@@ -18,8 +18,8 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] float speed = 4f;
     [SerializeField] float jumpSpeed = 4f;
 
-    Rigidbody2D rigidBody;
-    CapsuleCollider2D capsule;
+    Rigidbody2D rigidBody = null;
+    CapsuleCollider2D capsule = null;
     float radius;
     bool grounded = false;
     bool doubleJump = false;
@@ -38,16 +38,17 @@ public class PlayerBehavior : MonoBehaviour
         // checks for any collider directly under the player -- NOTE: this will include any enemies or objects that have colliders,
         //                                                            so collision masks may be necessary in the future
         if (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), Vector2.down, radius + 0.1f))
-            {
-                // sets grounded and double jump to true if the player is on a valid surface
-                grounded = true;
-                doubleJump = true;
-            }
-            else
-            {
-                // sets grounded to false if the player is not on a valid surface -- NOTE: double jump should not be edited here
-                grounded = false;
-            }
+        {
+            // sets grounded and double jump to true if the player is on a valid surface
+            grounded = true;
+            doubleJump = true;
+        }
+        else
+        {
+            // sets grounded to false if the player is not on a valid surface -- NOTE: double jump should not be edited here
+            grounded = false;
+        }
+
         // forces the player upwards when the jump button is hit, accounting for gravity
         if (Input.GetButtonDown("Jump") && (grounded || doubleJump))
         {
