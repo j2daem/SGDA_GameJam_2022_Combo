@@ -47,8 +47,8 @@ public class OrderController : MonoBehaviour
 
     private void NewOrderTicket()
     {
-        // Get total number of items on order -- Random.Range with integers use exclusive min and max values
-        totalNumberOfIngredients = Random.Range(0, 4);
+        // Get total number of items on order -- Random.Range with integers use inclusive min and exclusive max values
+        totalNumberOfIngredients = Random.Range(1, 4);
 
         // Replace array with new array that fits the new total number of items
         System.Array.Resize<IngredientType>(ref ingredientsOrdered, totalNumberOfIngredients);
@@ -65,7 +65,7 @@ public class OrderController : MonoBehaviour
             Debug.Log("Ingredient = " + ingredientsOrdered[i]);
         }
 
-        //displayOrder.DisplayNewIcons(totalNumberOfIngredients);
+        displayOrder.DisplayNewOrder(ingredientsOrdered);
     }
 
     // Call in Pickup class whenever any ingredient / item is picked up
