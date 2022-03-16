@@ -2,8 +2,8 @@
 // Created on:      03/13/2022
 
 // Last edited by:  John Mai
-// Last edited on:  03/15/2022, 2:34 PM
-// Last made edit:  Added flip script to allow player sprite to face left and right accordingly
+// Last edited on:  03/16/2022
+// Last made edit:  Adjusted CollectIngredient script to pass ingredient type to order controller
 
 // Description:     Handles player behaviors, which is just movement for now
 
@@ -14,7 +14,8 @@ using UnityEngine;
 public class PlayerBehavior : MonoBehaviour
 {
     [Header("Player Settings")]
-    [SerializeField] OrderGenerator order;
+    //[SerializeField] OrderGenerator order;
+    [SerializeField] OrderController orderController;
     [SerializeField] float speed = 4f;
     [SerializeField] float jumpSpeed = 4f;
     public int lives = 3;
@@ -84,14 +85,13 @@ public class PlayerBehavior : MonoBehaviour
     {
         // Switch way the player is labelled as facing
         facingRight = !facingRight;
-
-        // Multiply the player's x local scale by -1, flipping them
+        // Then actually flip the player's sprite
         transform.Rotate(0f, 180f, 0f);
     }
 
     public void CollectIngredient(IngredientType type)
     {
-        switch (type)
+        /*switch (type)
         {
             case IngredientType.lettuce:
                 order.orderProgress[0]++;
@@ -111,6 +111,8 @@ public class PlayerBehavior : MonoBehaviour
             case IngredientType.meat:
                 order.orderProgress[5]++;
                 break;
-        }
+        }*/
+
+        orderController.UpdateOrderTicket(type);
     }
 }

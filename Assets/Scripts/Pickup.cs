@@ -10,7 +10,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum IngredientType {lettuce, cheese, onion, tomato, pickle, meat};
+//public enum IngredientType {lettuce, cheese, onion, tomato, pickle, meat};
+public enum IngredientType {meat, cheese, tomato, lettuce, onion, pickle};
 
 public class Pickup : MonoBehaviour
 {

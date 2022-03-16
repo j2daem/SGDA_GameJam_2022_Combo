@@ -20,8 +20,9 @@ public class OrderGenerator : MonoBehaviour
     [SerializeField] int picklePoints = 25;
     [SerializeField] int meatPoints = 25;
 
-    [Header("Player")]
-    [SerializeField] PlayerBehavior player;
+    [Header("Object Initialization")]
+    [SerializeField] PlayerBehavior player = null;
+    [SerializeField] DisplayOrder displayOrder = null;
 
     int combo = 1;
     
@@ -62,6 +63,8 @@ public class OrderGenerator : MonoBehaviour
         {
             currentOrder[Random.Range(0, 6)] = 1;
         }
+
+        displayOrder.DisplayNewOrder(currentOrder);
 
         // writes order to console for testing purposes
         PrintArrays();
