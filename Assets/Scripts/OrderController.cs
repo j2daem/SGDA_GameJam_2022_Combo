@@ -88,6 +88,9 @@ public class OrderController : MonoBehaviour
                 {
                     CompleteOrder();
                 }
+
+                // Exit the loop to avoid pickup 'clearing' duplicate ordered ingredients
+                break;
             }
         }
 
