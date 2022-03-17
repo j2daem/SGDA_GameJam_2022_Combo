@@ -121,36 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &155028205
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 155028206}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &155028206
+--- !u!4 &155028206 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 155028206, guid: df06219d81a2d43c49f9d0245443e534,
+    type: 3}
+  m_PrefabInstance: {fileID: 7923692379498079}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155028205}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 764, y: 429.75, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,6 +394,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 155028206, guid: df06219d81a2d43c49f9d0245443e534, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 7923692728860196, guid: df06219d81a2d43c49f9d0245443e534, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -463,10 +443,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7923692728860198, guid: df06219d81a2d43c49f9d0245443e534, type: 3}
-      propertyPath: order
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7923692728860198, guid: df06219d81a2d43c49f9d0245443e534, type: 3}
       propertyPath: orderController
       value: 
       objectReference: {fileID: 409223666780550732}
@@ -474,6 +450,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
+    - target: {fileID: 8541711395699215433, guid: df06219d81a2d43c49f9d0245443e534,
+        type: 3}
+      propertyPath: firePoint
+      value: 
+      objectReference: {fileID: 155028206}
+    - target: {fileID: 8541711395699215433, guid: df06219d81a2d43c49f9d0245443e534,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 4577868544742880303, guid: e5d3c1eeb9aacdb448664b94b238079e,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df06219d81a2d43c49f9d0245443e534, type: 3}
 --- !u!114 &346402607771266198 stripped
