@@ -1,8 +1,8 @@
 ﻿// Author:          Scott Krabbenhoft
 // Created on:      03/13/2022
 
-// Last edited by:  John Mai
-// Last edited on:  03/16/2022
+// Last edited by:  Scott Krabbenhoft
+// Last edited on:  03/17/2022
 // Last made edit:  Adjusted CollectIngredient script to pass ingredient type to order controller
 
 // Description:     Handles player behaviors, which is just movement for now
@@ -18,9 +18,13 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] OrderController orderController;
     [SerializeField] float speed = 4f;
     [SerializeField] float jumpSpeed = 4f;
+    public float IFrameTime = 0.5f;
     public int lives = 3;
 
-    Rigidbody2D rigidBody = null;
+    [Header("Runtime Variable -- DO NOT EDIT")]
+    public Rigidbody2D rigidBody = null;
+    public bool invincible = false;
+
     CapsuleCollider2D capsule = null;
     float radius;
     bool grounded = false;
@@ -65,9 +69,10 @@ public class PlayerBehavior : MonoBehaviour
         }
 
         // manually adds x movement to position
-        rigidBody.position = transform.position + new Vector3(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0, 0);
-        // zeroes out x velocity to prevent sliding errors
-        rigidBody.velocity = new Vector3(0, rigidBody.velocity.y, 0);
+        if (!invincible)
+        {
+            rigidBody.position += new Vector2(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0);
+        }
 
         // If player moves left while facing right, flip the player to the left
         if ((Input.GetAxis("Horizontal") < 0) && facingRight)
@@ -114,5 +119,13 @@ public class PlayerBehavior : MonoBehaviour
         }*/
 
         orderController.UpdateOrderTicket(type);
+    }
+
+    public IEnumerator GiveIFrames(float wait)
+    {
+        // make player invulnerable to enemy hits for a short time to prevent multiple contact hits in rapid succession
+        invincible = true;
+        yield return new WaitForSeconds(wait);
+        invincible = false;
     }
 }

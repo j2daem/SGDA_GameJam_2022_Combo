@@ -2,7 +2,7 @@
 // Created on:      03/15/2022
 
 // Last edited by:  Scott Krabbenhoft
-// Last edited on:  03/15/2022
+// Last edited on:  03/17/2022
 
 // Description:     For testing with combo system. May be helpful if we decide to have ingredients as drops from defeated enemies
 
@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //public enum IngredientType {lettuce, cheese, onion, tomato, pickle, meat};
-public enum IngredientType {meat, cheese, tomato, lettuce, onion, pickle};
+// public enum IngredientType {meat, cheese, tomato, lettuce, onion, pickle};
 
 public class Pickup : MonoBehaviour
 {

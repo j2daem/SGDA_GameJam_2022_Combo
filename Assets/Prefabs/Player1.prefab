@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 7923692728860199}
   - component: {fileID: 7923692728860198}
   - component: {fileID: 8541711395699215433}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,3 +183,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 0}
+  bulletPrefab: {fileID: 0}

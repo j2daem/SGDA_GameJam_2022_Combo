@@ -1,8 +1,8 @@
 ﻿// Author:          John Mai
 // Created on:      03/15/2022
 
-// Last edited by:  John Mai
-// Last edited on:  03/15/2022
+// Last edited by:  Scott Krabbenhoft
+// Last edited on:  03/17/2022
 
 // Description:     Generates orders for player to complete. If they collect a wrong ingredient ONCE, fail the order;
 //                  otherwise, keep checking if the player is 
@@ -35,8 +35,12 @@ public class OrderController : MonoBehaviour
     {
         // New randomization seed
         Random.InitState((int)System.DateTime.Now.Ticks);
+
+        // Get first order
+        NewOrderTicket();
     }
 
+    /*
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -44,6 +48,7 @@ public class OrderController : MonoBehaviour
             NewOrderTicket();
         }
     }
+    */
 
     private void NewOrderTicket()
     {
