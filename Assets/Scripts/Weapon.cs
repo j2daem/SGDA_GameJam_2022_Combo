@@ -6,6 +6,9 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] Transform firePoint = null;
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] float bulletDuration = .5f;
+
+    GameObject bullet;
 
     private void Update()
     {
@@ -17,6 +20,7 @@ public class Weapon : MonoBehaviour
 
     private void Shoot()
     {
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Destroy(bullet, bulletDuration);
     }
 }

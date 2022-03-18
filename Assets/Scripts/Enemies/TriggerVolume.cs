@@ -3,7 +3,7 @@
 
 // Last edited by: John Mai
 // Last edited on:  03/18/2022
-// Last edits made: Adjusted movement behavior for player and enemy on trigger to avoid clipping
+// Last edits made: Adjusted movement behavior for player and enemy on trigger to 
 
 // Description:     Provides damage trigger volume for enemies that deal contact damage -- currently only implemented for meat;
 

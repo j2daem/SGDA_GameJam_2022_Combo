@@ -29,7 +29,7 @@ public class OrderController : MonoBehaviour
     bool[] ingredientCollected;
 
     int totalNumberOfIngredients;
-    float combo = 1f;
+    public float combo = 1f;
 
     private void Start()
     {
@@ -175,6 +175,8 @@ public class OrderController : MonoBehaviour
                 score *= 2.0f;
                 break;
         }
+
+        combo = Mathf.Clamp(combo + 1, 1, 5);
 
         player.lives = Mathf.Clamp(player.lives + 1, 0, 10);
         player.score += (int)Mathf.Round(score);
