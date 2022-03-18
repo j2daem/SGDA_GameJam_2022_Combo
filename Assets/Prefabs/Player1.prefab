@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155028205}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.249, y: 0, z: 0}
+  m_LocalPosition: {x: 0.35, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7923692728860196}
@@ -168,7 +168,10 @@ MonoBehaviour:
   orderController: {fileID: 0}
   speed: 12
   jumpSpeed: 4.75
+  IFrameTime: 0.5
   lives: 3
+  rigidBody: {fileID: 0}
+  invincible: 0
   score: 0
 --- !u!114 &8541711395699215433
 MonoBehaviour:
@@ -182,5 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 592fa3186da159243a15454d5ffaa4c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 0}
-  bulletPrefab: {fileID: 0}
+  firePoint: {fileID: 155028206}
+  bulletPrefab: {fileID: 4577868544742880303, guid: e5d3c1eeb9aacdb448664b94b238079e,
+    type: 3}
+  bulletDuration: 0.5
