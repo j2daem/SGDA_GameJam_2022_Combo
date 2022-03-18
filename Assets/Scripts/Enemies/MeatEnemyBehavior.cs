@@ -1,8 +1,9 @@
 ﻿// Author:          Scott Krabbenhoft
 // Created on:      03/17/2022
 
-// Last edited by:  Scott Krabbenhoft
-// Last edited on:  03/17/2022
+// Last edited by: John Mai
+// Last edited on:  03/18/2022
+// Last edits made: Moved speed value to Enemy class
 
 // Description:     Provides enemy behavior for meat patty enemy type
 
@@ -20,7 +21,6 @@ public class MeatEnemyBehavior : Enemy
 
     BoxCollider2D box = null;
     float radius;
-    float speed = 0;
     bool grounded = false;
     
 
@@ -35,7 +35,7 @@ public class MeatEnemyBehavior : Enemy
     {
         if (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), Vector2.down, radius + 0.1f))
         {
-            // sets grounded to true  if the enemy is     on a valid surface
+            // sets grounded to true if the enemy is on a valid surface
             grounded = true;
         }
         else
@@ -73,5 +73,10 @@ public class MeatEnemyBehavior : Enemy
             speed = 0;
             direction *= -1;
         }
+    }
+
+    public void StopEnemy()
+    {
+        speed = 0;
     }
 }

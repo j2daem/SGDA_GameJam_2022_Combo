@@ -30,6 +30,7 @@ public class PlayerBehavior : MonoBehaviour
     bool grounded = false;
     bool doubleJump = false;
     bool facingRight = true;
+    bool stunned = false;
 
     public int score;
     
@@ -127,5 +128,26 @@ public class PlayerBehavior : MonoBehaviour
         invincible = true;
         yield return new WaitForSeconds(wait);
         invincible = false;
+    }
+
+    public void StunPlayer(float stunDuration)
+    {
+        if (!stunned)
+        {
+            StartCoroutine(Stunned(stunDuration));
+        }
+    }
+
+    IEnumerator Stunned(float duration)
+    {
+        float initialSpeed = speed;
+
+        stunned = true;
+        speed = 0;
+
+        yield return new WaitForSeconds(duration);
+
+        speed = initialSpeed;
+        stunned = false;
     }
 }
