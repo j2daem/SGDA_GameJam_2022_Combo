@@ -1,9 +1,9 @@
 ﻿// Author:          Scott Krabbenhoft
 // Created on:      03/13/2022
 
-// Last edited by:  Scott Krabbenhoft
-// Last edited on:  03/17/2022
-// Last made edit:  Adjusted CollectIngredient script to pass ingredient type to order controller
+// Last edited by:  John Mai
+// Last edited on:  03/20/2022
+// Last made edit:  Added animator controllor to switch animations
 
 // Description:     Handles player behaviors, which is just movement for now
 
@@ -16,6 +16,7 @@ public class PlayerBehavior : MonoBehaviour
     [Header("Player Settings")]
     //[SerializeField] OrderGenerator order;
     [SerializeField] OrderController orderController;
+    [SerializeField] Animator animator;
     [SerializeField] float speed = 4f;
     [SerializeField] float jumpSpeed = 4f;
     public float IFrameTime = 0.5f;
@@ -51,11 +52,13 @@ public class PlayerBehavior : MonoBehaviour
             // sets grounded and double jump to true if the player is on a valid surface
             grounded = true;
             doubleJump = true;
+            animator.SetBool("isJumping", false);
         }
         else
         {
             // sets grounded to false if the player is not on a valid surface -- NOTE: double jump should not be edited here
             grounded = false;
+            animator.SetBool("isJumping", true);
         }
 
         // forces the player upwards when the jump button is hit, accounting for gravity
@@ -73,6 +76,17 @@ public class PlayerBehavior : MonoBehaviour
         if (!invincible)
         {
             rigidBody.position += new Vector2(Input.GetAxis("Horizontal") * speed * Time.deltaTime, 0);
+        }
+
+        // checks to see if players is moving
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
+            animator.SetBool("isWalking", true);
+        }
+
+        else
+        {
+            animator.SetBool("isWalking", false);
         }
 
         // If player moves left while facing right, flip the player to the left
@@ -122,6 +136,11 @@ public class PlayerBehavior : MonoBehaviour
         orderController.UpdateOrderTicket(type);
     }
 
+    public void StartIFrames()
+    {
+        StartCoroutine(GiveIFrames(IFrameTime));
+    }
+
     public IEnumerator GiveIFrames(float wait)
     {
         // make player invulnerable to enemy hits for a short time to prevent multiple contact hits in rapid succession
@@ -142,6 +161,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         float initialSpeed = speed;
 
+        animator.SetBool("isHit", true);
         stunned = true;
         speed = 0;
 
@@ -149,5 +169,11 @@ public class PlayerBehavior : MonoBehaviour
 
         speed = initialSpeed;
         stunned = false;
+        animator.SetBool("isHit", false);
+    }
+
+    public void PlayerHit()
+    {
+        lives--;
     }
 }

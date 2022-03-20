@@ -13,6 +13,7 @@ using UnityEngine;
 
 public class TriggerVolume : MonoBehaviour
 {
+
     Enemy parentEnemy = null;
     Rigidbody2D rigidBody = null;
 
@@ -29,7 +30,7 @@ public class TriggerVolume : MonoBehaviour
         if (other.gameObject.GetComponent<PlayerBehavior>() != null && !other.gameObject.GetComponent<PlayerBehavior>().invincible)
         {
             PlayerBehavior player = other.gameObject.GetComponent<PlayerBehavior>();
-            player.lives--;
+            player.PlayerHit();
             // calculate knockback to player
             float distance = Vector2.Distance(new Vector2(transform.position.x, transform.position.y), new Vector2(player.transform.position.x, player.transform.position.y));
             float vectorX = parentEnemy.knockback * ((player.transform.position.x - transform.position.x) / distance);
@@ -45,7 +46,7 @@ public class TriggerVolume : MonoBehaviour
             // apply knockback to player
             player.rigidBody.AddForce(new Vector2(vectorX, vectorY + 0.2f), ForceMode2D.Impulse);
             // make player invincible to prevent several hits in rapid succession
-            player.GiveIFrames(player.IFrameTime);
+            player.StartIFrames();
             Debug.Log(player.rigidBody.velocity);
         }
     }
