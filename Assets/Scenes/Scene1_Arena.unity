@@ -381,6 +381,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeatEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5310498304923499123, guid: 8350662caf32b4f11a4cdc5386cd2f87,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5310498304923499124, guid: 8350662caf32b4f11a4cdc5386cd2f87,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -807,7 +812,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
-    - target: {fileID: 8541711395699215433, guid: df06219d81a2d43c49f9d0245443e534,
+    - target: {fileID: 1607752947484439174, guid: df06219d81a2d43c49f9d0245443e534,
         type: 3}
       propertyPath: animator
       value: 
