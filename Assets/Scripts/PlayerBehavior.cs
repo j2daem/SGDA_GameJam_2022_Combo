@@ -25,7 +25,7 @@ public class PlayerBehavior : MonoBehaviour
     public Rigidbody2D rigidBody = null;
     public bool invincible = false;
 
-    CapsuleCollider2D capsule = null;
+    BoxCollider2D box = null;
     float radius;
     bool grounded = false;
     bool doubleJump = false;
@@ -38,8 +38,8 @@ public class PlayerBehavior : MonoBehaviour
     {
         // gets some values to make later manipulation easier
         rigidBody = GetComponent<Rigidbody2D>();
-        capsule = GetComponent<CapsuleCollider2D>();
-        radius = capsule.size.y / 2;
+        box = GetComponent<BoxCollider2D>();
+        radius = box.size.y / 2;
     }
 
     void Update()
